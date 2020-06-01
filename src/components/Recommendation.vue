@@ -1,7 +1,10 @@
 <template>
   <div>
-    <h2>Would you recommend our service to others?</h2>
-    <Rating :rating="rating" @update-rating="$emit('update-rating', $event)"/>
+    <h2 class="title">Would you recommend our service to others?</h2>
+    <Rating
+      :rating="rating"
+      @update-rating="$emit('update-rating', $event)"
+    />
   </div>
 </template>
 
@@ -17,3 +20,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    margin: 70px 0 5.8px 0;
+  }
+</style>

@@ -1,20 +1,19 @@
 <template>
-  <ul class="multiselect">
+  <ul class="selection">
     <li
       v-for="select of selection"
       :key="select"
     >
-
-      <label class="select" :class="{active: checked.includes(select)}">
+      <label class="select" :class="{active: currentSelected.includes(select)}">
         {{ select }}
         <input
-          v-model="checked"
+          class="select__input"
+          v-model="currentSelected"
           :value="select"
-          @change="$emit('update-selected', checked)"
+          @change="$emit('update-selected', currentSelected)"
           type="checkbox"
         >
       </label>
-
     </li>
   </ul>
 </template>
@@ -23,36 +22,47 @@
 export default {
   props: {
     selection: Array,
-    selected: Array
+    selected: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
   },
   data () {
     return {
-      checked: this.selected
+      currentSelected: this.selected
     }
   }
 }
 </script>
 
 <style scoped>
-  input {
+  .select__input {
     display: none;
   }
-  .multiselect {
-    padding: 0;
+  .selection {
     display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 27px 40px 52px;
     list-style: none;
   }
   .select {
-    margin: 5px;
-    border: 1px solid #1D2D36;
-    color: #1D2D36;
-    border-radius: 7px;
-    line-height: 19px;
+    display: block;
+    white-space: nowrap;
     font-family: 'Roboto', sans-serif;
+    font-size: 16px;
     font-weight: 400;
-    padding: 5.5px 9.5px;
+    line-height: 19px;
+    margin: 5px 10px;
+    padding: 5px 9px;
+    cursor: pointer;
+    color: #1d2d36;
+    border: 1px solid #1d2d36;
+    border-radius: 7px;
   }
   .active {
-    background-color: #F5D734;
+    background-color: #f5d734;
   }
 </style>

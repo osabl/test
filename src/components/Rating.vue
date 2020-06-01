@@ -1,12 +1,14 @@
 <template>
   <div class="rating">
     <label
+      class="point"
       v-for="index of 10"
       :key="index"
       :class="{active: picked === index}"
     >
       {{ index }}
       <input
+        class="point__input"
         v-model="picked"
         @click="update"
         :value="index"
@@ -32,7 +34,7 @@ export default {
   methods: {
     update: debounce(function () {
       this.$emit('update-rating', this.picked)
-    }, 2500)
+    }, 2000)
   }
 }
 </script>
@@ -41,24 +43,26 @@ export default {
   .rating {
     display: inline-flex;
     align-items: center;
+    margin-bottom: 69px;
+    padding-right: 13px;
   }
-  input {
+  .point__input {
     display: none;
   }
-  label {
+  .point {
     font-family: 'Righteous', cursive;
     font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: 20px;
-    height: 20px;
-    margin: 5px;
+    width: 24px;
+    height: 22px;
+    margin: 3.3px;
     border: 1px solid black;
   }
   .active {
     border: none;
-    background-color: #F5D734;
-  }
+    background-color: #f5d734;
+}
 </style>
