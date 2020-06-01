@@ -25,6 +25,7 @@
 import Recommendation from '@/components/Recommendation.vue'
 import Specify from '@/components/Specify.vue'
 import Message from '@/components/Message.vue'
+import gql from 'graphql-tag'
 
 export default {
   components: {
@@ -40,23 +41,88 @@ export default {
     }
   },
   beforeMount () {
-    this.recommendation = {
-      userId: 123,
-      rating: 5,
-      specify: ['one', 'two', 'three', 'seven'],
-      message: ''
-    }
+    this.addRecommendation()
   },
   methods: {
+    addRecommendation () {
+      const newRecommendation = {
+        rating: 0,
+        specify: '[]',
+        message: ''
+      }
+
+      this.$apollo.mutate({
+        mutation: gql`mutation ($object: recommendations_insert_input!) {
+          insert_recommendations_one(object: $object) {
+            id
+            rating
+            specify
+            message
+          }
+        }`,
+        variables: {
+          object: newRecommendation
+        }
+      }).then(response => {
+        const { id, rating, specify, message } = response.data.insert_recommendations_one
+
+        this.recommendation = {
+          id,
+          rating,
+          specify: JSON.parse(specify),
+          message
+        }
+      })
+        .catch(err => console.log(err))
+    },
     updateRating (value) {
       this.recommendation.rating = value
+      this.$apollo.mutate({
+        mutation: gql`mutation ($id: Int!, $rating: Int) {
+          update_recommendations(_set: {rating: $rating}, where: {id: {_eq: $id}}) {
+            returning {
+              id
+            }
+          }
+        }`,
+        variables: {
+          id: this.recommendation.id,
+          rating: value
+        }
+      })
       this.nextPage()
     },
     updateSelected (value) {
       this.recommendation.specify = value
+      this.$apollo.mutate({
+        mutation: gql`mutation ($id: Int!, $specify: String) {
+          update_recommendations(_set: {specify: $specify}, where: {id: {_eq: $id}}) {
+            returning {
+              id
+            }
+          }
+        }`,
+        variables: {
+          id: this.recommendation.id,
+          specify: JSON.stringify(value)
+        }
+      })
     },
     updateMessage (value) {
       this.recommendation.message = value
+      this.$apollo.mutate({
+        mutation: gql`mutation ($id: Int!, $message: String) {
+          update_recommendations(_set: {message: $message}, where: {id: {_eq: $id}}) {
+            returning {
+              id
+            }
+          }
+        }`,
+        variables: {
+          id: this.recommendation.id,
+          message: value
+        }
+      })
     },
     nextPage () {
       const nextIndex = this.pages.indexOf(this.currentPage) + 1
