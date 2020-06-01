@@ -24,8 +24,8 @@ export default {
 <style scoped>
   .title {
     font-family: 'Roboto', sans-serif;
-    font-weight: 700;
     font-size: 26px;
+    font-weight: 700;
     line-height: 32px;
     margin: 70px 0 5.8px 0;
   }

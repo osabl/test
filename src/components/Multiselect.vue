@@ -44,20 +44,20 @@ export default {
   .selection {
     display: flex;
     flex-wrap: wrap;
-    padding: 0;
     margin: 0 41px 40px 51px;
+    padding: 0;
     list-style: none;
   }
   .select {
-    display: block;
-    white-space: nowrap;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 19px;
+    display: block;
     margin: 4.5px 10px;
     padding: 5px 9px;
     cursor: pointer;
+    white-space: nowrap;
     color: #1d2d36;
     border: 1px solid #1d2d36;
     border-radius: 7px;
@@ -77,7 +77,7 @@ export default {
     padding-left: 6px;
   }
   .selection li:nth-child(3) .select {
-    margin-right: 0px;
+    margin-right: 0;
   }
   .selection li:nth-child(4) .select {
     padding-right: 12px;

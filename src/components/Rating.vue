@@ -59,10 +59,11 @@ export default {
     width: 24px;
     height: 22px;
     margin: 3.3px;
+    cursor: pointer;
     border: 1px solid black;
   }
   .active {
     border: none;
     background-color: #f5d734;
-}
+  }
 </style>

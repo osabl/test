@@ -147,8 +147,8 @@ export default {
 
 <style scoped>
   .evaluation {
-    text-align: center;
     width: 700px;
+    text-align: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   }
 </style>
