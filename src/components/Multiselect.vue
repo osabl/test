@@ -45,7 +45,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    margin: 0 27px 40px 52px;
+    margin: 0 41px 40px 51px;
     list-style: none;
   }
   .select {
@@ -55,7 +55,7 @@ export default {
     font-size: 16px;
     font-weight: 400;
     line-height: 19px;
-    margin: 5px 10px;
+    margin: 4.5px 10px;
     padding: 5px 9px;
     cursor: pointer;
     color: #1d2d36;
@@ -64,5 +64,36 @@ export default {
   }
   .active {
     background-color: #f5d734;
+  }
+
+  /* FOR PIXEL PERFECT :) */
+  .selection li:nth-child(1) .select {
+    margin-right: 6px;
+    padding-right: 11px;
+  }
+  .selection li:nth-child(2) .select {
+    margin-right: 2px;
+    padding-right: 13px;
+    padding-left: 6px;
+  }
+  .selection li:nth-child(3) .select {
+    margin-right: 0px;
+  }
+  .selection li:nth-child(4) .select {
+    padding-right: 12px;
+  }
+  .selection li:nth-child(5) .select {
+    margin-right: 3px;
+  }
+  .selection li:nth-child(6) .select {
+    margin-right: 2px;
+    padding-right: 13px;
+  }
+  .selection li:nth-child(7) .select {
+    margin-right: 3px;
+    padding-right: 10px;
+  }
+  .selection li:nth-child(8) .select {
+    padding-right: 11px;
   }
 </style>

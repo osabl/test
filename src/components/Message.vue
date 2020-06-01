@@ -43,7 +43,7 @@ export default {
     line-height: 32px;
     margin-top: 3px;
     margin-bottom: 8px;
-    padding-left: 13px;
+    padding-left: 15px;
   }
   .message {
     display: block;

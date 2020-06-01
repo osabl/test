@@ -45,12 +45,12 @@ export default {
     font-weight: 700;
     line-height: 32px;
     margin-top: 38px;
-    margin-bottom: 17px;
+    margin-bottom: 18.5px;
   }
   .btn {
     width: 70px;
     height: 50px;
-    margin: 37px 30px;
+    margin: 37px 30.5px;
     cursor: pointer;
     border: none;
     background-color: #8d9599;
@@ -61,7 +61,7 @@ export default {
     background-position: center;
   }
   .btn-next {
-    transform: rotate(180deg);
+    transform: scaleX(-1);
     background-image: url(../assets/arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
